@@ -8,7 +8,7 @@ class AuthCtrl{
 
   submitForm(){
     this.isSubmitting = true;
-    
+
     console.log(this.formData);
   }
 }

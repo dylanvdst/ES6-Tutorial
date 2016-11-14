@@ -1,6 +1,7 @@
 function AuthConfig($stateProvider, $httpProvider){
   'ngInject';
 
+  //routes
   $stateProvider
 
   .state('app.login', {
