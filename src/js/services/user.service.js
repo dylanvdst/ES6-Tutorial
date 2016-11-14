@@ -41,8 +41,7 @@ export default class User {
     this._$state.go(this._$state.$current, null, {reload: true});
   }
 
-  verifyAuth()
-  {
+  verifyAuth(){
     let deferred = this._$q.defer();
 
     //Check for JWT token first
@@ -69,6 +68,22 @@ export default class User {
         }
       );
     }
+    return deferred.promise;
+  }
+
+  ensureAuthIs(bool){
+    let deferred = this._$q.defer();
+
+    this.verifyAuth().then((authValid) => {
+      //if it's the opposite, redirect home
+      if(authValid !== bool){
+        this._$state.go('app.home');
+        deferred.resolve(false);
+      }else{
+        deferred.resolve(true);
+      }
+    })
+
     return deferred.promise;
   }
 }
