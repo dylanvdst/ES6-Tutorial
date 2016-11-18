@@ -1,6 +1,9 @@
 class EditorCtrl{
-  constructor(){
+  constructor(Articles, $state){
     'ngInject';
+
+    this._Articles = Articles;
+    this._$state = $state;
 
     this.article = {
       title: '',
@@ -19,6 +22,20 @@ class EditorCtrl{
 
   removeTag(tagName){
     this.article.tagList = this.article.tagList.filter((slug) => slug != tagName);
+  }
+
+  submit(){
+    this.isSubmitting = true;
+
+    this._Articles.save(this.article).then(
+      (newArticle) => {
+        this._$state.go('app.article', {slug: newArticle.slug});
+      },
+      (err) => {
+        this.isSubmitting = false;
+        this.errors = err.data.errors;
+      }
+    );
   }
 }
 
