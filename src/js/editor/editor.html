@@ -34,16 +34,13 @@
               <input class="form-control"
                 type="text"
                 placeholder="Enter tags"
-                ng-model="$ctrl.tagField" />
+                ng-model="$ctrl.tagField"
+                ng-keyup="$event.keyCode == 13 && $ctrl.addTag()"/>
 
               <div class="tag-list">
-                <span class="tag-default tag-pill">
-                  <i class="ion-close-round"></i>
-                  Example Tag
-                </span>
-                <span class="tag-default tag-pill">
-                  <i class="ion-close-round"></i>
-                  Another Tag
+                <span ng-repeat="tag in $ctrl.article.tagList" class="tag-default tag-pill">
+                  <i class="ion-close-round" ng-click="$ctrl.removeTag(tag)"></i>
+                  {{ tag }}
                 </span>
               </div>
             </fieldset>
