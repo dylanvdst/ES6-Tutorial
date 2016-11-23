@@ -1,8 +1,16 @@
+import marked from 'marked';
+
 class ArticleCtrl {
-  constructor(article) {
+  constructor(article, $sce, $rootScope) {
     'ngInject';
 
     this.article = article;
+
+    //update the itle of this page
+    $rootScope.setPageTitle(this.article.title);
+
+    //Transform the markdown into html
+    this.article.body = $sce.trustAsHtml(marked(this.article.body, {sanitize: true}));
 
   }
 }
