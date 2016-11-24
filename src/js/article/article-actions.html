@@ -12,11 +12,8 @@
   </span>
    <!-- Otherwise, show favorite & follow buttons -->
   <follow-btn user="$ctrl.article.author"></follow-btn>
-    &nbsp;
-    <button class="btn btn-sm btn-outline-primary">
-      <i class="ion-heart"></i>
-      &nbsp;
-      Favorite Article <span class="counter">(29)</span>
-    </button>
+  <favorite-btn article="$ctrl.article">
+    {{ $ctrl.article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{$ctrl.article.favoritesCount}})</span>
+  </favorite-btn>
   </span>
 </article-meta>
