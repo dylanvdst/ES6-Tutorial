@@ -11,12 +11,7 @@
     </button>
   </span>
    <!-- Otherwise, show favorite & follow buttons -->
-  <span ng-hide="$ctrl.canModify">
-    <button class="btn btn-sm btn-outline-secondary">
-      <i class="ion-plus-round"></i>
-      &nbsp;
-      Follow Brad Green
-    </button>
+  <follow-btn user="$ctrl.article.author"></follow-btn>
     &nbsp;
     <button class="btn btn-sm btn-outline-primary">
       <i class="ion-heart"></i>
