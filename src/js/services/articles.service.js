@@ -37,6 +37,14 @@ export default class Articles{
     return deferred.promise;
   }
 
+  //Delete article
+  destroy(slug){
+    return this._$http({
+      url: this._AppConstants.api + '/articles/' + slug,
+      method: 'DELETE'
+    });
+  }
+
   save(article){
     let request = {};
 
