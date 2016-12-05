@@ -44,5 +44,5 @@ angular.module('app').config(appConfig);
 angular.module('app').run(appRun);
 
 angular.bootstrap(document, ['app'], {
-  strictDi: true
+  strictDi: false
 });
