@@ -6,6 +6,7 @@ export default class Comments{
     this._$http = $http;
   }
 
+  //Add a comment to an article
   add(slug, payload) {
     return this._$http({
       url: `${this._AppConstants.api}/articles/${slug}/comments`,
@@ -18,6 +19,15 @@ export default class Comments{
     }).then(res => res.data.comment);
   };
 
+  //Delete a commentfrom an article
+  destroy(commentId, articleSlug){
+    return this._$http({
+      url: `${this._AppConstants.api}/articles/${articleSlug}/comments/${commentId}`,
+      method: 'DELETE'
+    });
+  }
+
+  //Retrieve the comments for an article
   getAll(slug) {
     return this._$http({
       url: `${this._AppConstants.api}/articles/${slug}/comments`,
